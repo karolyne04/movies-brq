@@ -46,7 +46,7 @@ export default function Input({
 
     const labelStyle = {
         position: "absolute",
-        left: 30,
+        left: 44,
         top: labelAnim.interpolate({
             inputRange: [0, 1],
             outputRange: [18, 3], // posição placeholder → posição label
@@ -60,7 +60,7 @@ export default function Input({
 
     return (
         <View style={[styles.container, isFocused && styles.focused]}>
-            <Icon name={iconName} size={20} color="#FFF" style={styles.iconLeft} />
+            <Icon name={iconName} size={24} color={colors.secondary} />
 
             <Animated.Text style={labelStyle}>
                 {label}
@@ -72,15 +72,15 @@ export default function Input({
                 onChangeText={onChangeText}
                 secureTextEntry={secureTextEntry}
                 onFocus={() => setIsFocused(true)}
-                // onBlur={handleBlur}
+
                 onBlur={() => setIsFocused(false)}
             />
 
-            {/* {value?.length > 0 && ( */}
+
             <TouchableOpacity onPress={() => onChangeText("")} style={styles.clearButton}>
                 <Icon name="close" size={20} color="#FFF" />
             </TouchableOpacity>
-            {/* )} */}
+
         </View>
     );
 }
@@ -90,12 +90,12 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         width: 325,
         height: 56,
-        gap: 2,
+        gap: 5,
         borderRadius: 4,
         backgroundColor: colors.tertiary,
         flexDirection: "row",
         alignItems: "center",
-        paddingHorizontal: 10,
+        paddingHorizontal: 12,
         position: "relative",
         borderBottomWidth: 2,
         borderBottomColor: colors.secondary,
@@ -105,9 +105,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomColor: colors.primary,
     },
-    iconLeft: {
-        marginRight: 8,
-    },
+
     input: {
         flex: 1,
         color: "#FFF",

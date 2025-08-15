@@ -1,4 +1,4 @@
-import { Alert, Image, StyleSheet, Text, View } from "react-native";
+import { Alert, Image, KeyboardAvoidingView, Platform, StyleSheet, Text, View } from "react-native";
 import { colors } from "../theme/colors";
 import InputUsuario from "../components/Input";
 import Button from "../components/Button";
@@ -48,7 +48,11 @@ const Login = () => {
     };
 
     return (
-        <View style={styles.container}>
+
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={styles.container}
+        >
 
             <Image source={require('../assets/img/logo.png')} style={styles.logo} />
             <Input
@@ -79,8 +83,9 @@ const Login = () => {
             />
 
             <Text style={styles.forgotPassword}
-            >Esqueci senha</Text>
-        </View>
+            >Esqueci a Senha</Text>
+
+        </KeyboardAvoidingView>
     );
 };
 
@@ -96,15 +101,20 @@ const styles = StyleSheet.create({
         backgroundColor: colors.neutral,
         gap: 20
     },
-
     logo: {
         width: 224,
         height: 224,
-
     },
     forgotPassword: {
         color: colors.secondary,
         marginTop: 12,
+        fontFamily: 'Roboto',
+        fontWeight: '500',
+        fontSize: 14,
+        lineHeight: 20,
+        letterSpacing: 0.1,
+        textAlign: 'center',
+        textAlignVertical: 'center',
     },
     errorText: {
         color: "red",

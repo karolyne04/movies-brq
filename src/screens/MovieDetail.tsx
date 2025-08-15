@@ -1,7 +1,7 @@
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
-import { Movie } from "../service/tmdb";
+import { Movie } from "../service/api";
 import { colors } from "../theme/colors";
 import Icon from "../components/Icon";
 import Card from "../components/Card";
@@ -20,6 +20,28 @@ const MovieDetail = () => {
     const [scrolled, setScrolled] = useState(false);
     const { addFavorite, removeFavorite, isFavorite } = useFavoritesStore();
     const fav = isFavorite(movie.id);
+    const GENRES: Record<number, string> = {
+        28: "Ação",
+        12: "Aventura",
+        16: "Animação",
+        35: "Comédia",
+        80: "Crime",
+        99: "Documentário",
+        18: "Drama",
+        10751: "Família",
+        14: "Fantasia",
+        36: "História",
+        27: "Terror",
+        10402: "Música",
+        9648: "Mistério",
+        10749: "Romance",
+        878: "Ficção Científica",
+        10770: "TV Movie",
+        53: "Thriller",
+        10752: "Guerra",
+        37: "Faroeste",
+    };
+
 
     const handleScroll = (event) => {
         const yOffset = event.nativeEvent.contentOffset.y;
@@ -88,7 +110,13 @@ const MovieDetail = () => {
 
                     <View style={styles.row}>
                         <Card icon="heart" value={movie.vote_count} label="Favoritos" />
-                        <Card icon="notification" value={movie.poster_path} label="Notificações" />
+                        <Card icon="notification" value={
+                            movie.genre_ids?.length
+                                ? GENRES[movie.genre_ids[0]]
+                                : "Sem gênero"
+                        }
+                            label="Gênero"
+                        />
                     </View>
                 </View>
             </ScrollView>
@@ -137,17 +165,17 @@ const styles = StyleSheet.create({
     },
     details: {
         padding: 16,
+        marginBottom: 60
     },
     title: {
-
         fontWeight: "bold",
         marginBottom: 16,
         color: colors.secondary,
-        fontFamily: "Nunito_700Bold", // fonte + peso
-        fontSize: 28, // font-size
-        lineHeight: 36, // line-height
-        textAlignVertical: "center", // vertical-align: middle
-        letterSpacing: 0, // letter-spacing
+        fontFamily: "Nunito_700Bold",
+        fontSize: 28,
+        lineHeight: 36,
+        textAlignVertical: "center",
+        letterSpacing: 0,
     },
     subtitle: {
         color: colors.primary,
@@ -158,17 +186,16 @@ const styles = StyleSheet.create({
     },
     overview: {
         fontSize: 16,
-
         color: colors.secondary,
-        fontFamily: "Nunito_400Regular", // fonte + peso 400
-
-        lineHeight: 24, // line-height
-        letterSpacing: 0, // letter-spacing
-        textAlignVertical: "center", // vertical-align: middle
+        fontFamily: "Nunito_400Regular",
+        lineHeight: 24,
+        letterSpacing: 0,
+        textAlignVertical: "center",
     },
     row: {
         flexDirection: "row",
         justifyContent: "space-between",
         marginTop: 16,
+
     },
 });

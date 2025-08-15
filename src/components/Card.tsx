@@ -28,9 +28,10 @@ const styles = StyleSheet.create({
     header: {
         flexDirection: "row",
         alignItems: "center",
+        alignContent: "center",
         justifyContent: "center",
         alignSelf: "center",
-        gap: 2,
+        gap: 4,
     },
     icon: {
         color: colors.primary
@@ -38,7 +39,8 @@ const styles = StyleSheet.create({
     label: {
         color: colors.primary,
         fontWeight: "bold",
-        marginTop: 5
+        marginTop: 5,
+        marginLeft: 4,
     },
     value: {
         color: colors.secondary,

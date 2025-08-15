@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { ActivityIndicator, Alert, FlatList, View, StyleSheet } from "react-native";
-import { getPopularMovies, Movie } from "../service/tmdb";
+import { getPopularMovies, Movie } from "../service/api";
 import MovieCard from "../components/MovieCard";
 import { useNavigation } from "@react-navigation/native";
 
-const TodosF = () => {
+const AllMovies = () => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigation = useNavigation();
@@ -49,7 +49,7 @@ const TodosF = () => {
     );
 };
 
-export default TodosF;
+export default AllMovies;
 
 const styles = StyleSheet.create({
     list: {

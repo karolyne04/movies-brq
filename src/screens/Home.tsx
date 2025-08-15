@@ -2,8 +2,9 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Header from "../components/Header";
 import { colors } from "../theme/colors";
 import { useState } from "react";
-import TodosF from "./TodosF";
+import TodosF from "./AllMovies";
 import Favorite from "./Favorite";
+import AllMovies from "./AllMovies";
 
 export default function Home() {
     const [activeTab, setActiveTab] = useState('todos');
@@ -40,7 +41,7 @@ export default function Home() {
                 </TouchableOpacity>
             </View>
             {activeTab === 'todos' ? (
-                <TodosF />
+                <AllMovies />
             ) : (
                 <Favorite />
             )}
@@ -54,13 +55,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.neutral,
         alignItems: "center",
-
     },
     tabsContainer: {
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'space-around',
-
     },
     tab: {
         alignItems: 'center',
@@ -68,22 +67,21 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     tabText: {
-        color: '#aaa',
+        color: colors.gray,
         fontSize: 16,
-        fontFamily: "Nunito_700Bold", // fonte + peso 700
-
-        lineHeight: 24, // line-height
-        letterSpacing: 0, // letter-spacing
-        textAlign: "center", // centralizado horizontalmente
+        fontFamily: "Nunito_700Bold",
+        lineHeight: 24,
+        letterSpacing: 0,
+        textAlign: "center",
     },
     tabTextActive: {
-        color: colors.primary, // cor ativa
+        color: colors.primary,
         fontWeight: 'bold',
     },
     tabIndicator: {
         marginTop: 4,
         height: 2,
         width: '100%',
-        backgroundColor: '#FFA500',
+        backgroundColor: colors.primary,
     },
 });

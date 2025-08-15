@@ -8,5 +8,6 @@ export const colors = {
   error: "#b00020",
   text: "#000000",
   disabled: "#f0f0f0",
+  
  
 };
