@@ -1,11 +1,19 @@
-import { useRoute, useNavigation } from "@react-navigation/native";
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useState } from "react";
-import { Movie } from "../service/api";
-import { colors } from "../theme/colors";
-import Icon from "../components/Icon";
+import {
+    Alert,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+} from "react-native";
 import Card from "../components/Card";
+import Icon from "../components/Icon";
+import type { Movie } from "../service/api";
 import { useFavoritesStore } from "../store/favoritesStore";
+import { colors } from "../theme/colors";
 
 type MovieDetailRouteProp = {
     params: {
@@ -42,15 +50,21 @@ const MovieDetail = () => {
         37: "Faroeste",
     };
 
-
     const handleScroll = (event) => {
         const yOffset = event.nativeEvent.contentOffset.y;
         setScrolled(yOffset > 50);
     };
 
+    const handleFavorite = () => {
+        fav ? removeFavorite(movie.id) : addFavorite(movie);
+        Alert.alert(
+            "Sucesso",
+            "Adicionado aos Favoritos"
+        );
+    };
+
     return (
         <View style={styles.container}>
-
             <View
                 style={[
                     styles.header,
@@ -78,9 +92,7 @@ const MovieDetail = () => {
                         styles.iconButton,
                         { backgroundColor: scrolled ? colors.primary : colors.secondary },
                     ]}
-                    onPress={() => {
-                        fav ? removeFavorite(movie.id) : addFavorite(movie);
-                    }}
+                    onPress={handleFavorite}
                 >
                     <Icon
                         name="heartCircle"
@@ -93,7 +105,9 @@ const MovieDetail = () => {
             <ScrollView onScroll={handleScroll} scrollEventThrottle={16}>
                 {/* Poster */}
                 <Image
-                    source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
+                    source={{
+                        uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                    }}
                     style={styles.poster}
                 />
 
@@ -104,17 +118,23 @@ const MovieDetail = () => {
                     <Text style={styles.overview}>{movie.overview}</Text>
 
                     <View style={styles.row}>
-                        <Card icon="calendar" value={movie.release_date} label="Data de Lançamento" />
+                        <Card
+                            icon="calendar"
+                            value={movie.release_date}
+                            label="Data de Lançamento"
+                        />
                         <Card icon="star" value={movie.vote_average} label="Avaliação" />
                     </View>
 
                     <View style={styles.row}>
                         <Card icon="heart" value={movie.vote_count} label="Favoritos" />
-                        <Card icon="notification" value={
-                            movie.genre_ids?.length
-                                ? GENRES[movie.genre_ids[0]]
-                                : "Sem gênero"
-                        }
+                        <Card
+                            icon="notification"
+                            value={
+                                movie.genre_ids?.length
+                                    ? GENRES[movie.genre_ids[0]]
+                                    : "Sem gênero"
+                            }
                             label="Gênero"
                         />
                     </View>
@@ -131,7 +151,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.neutral,
         justifyContent: "space-between",
-        gap: 20
+        gap: 20,
     },
     poster: {
         width: "100%",
@@ -165,7 +185,7 @@ const styles = StyleSheet.create({
     },
     details: {
         padding: 16,
-        marginBottom: 60
+        marginBottom: 60,
     },
     title: {
         fontWeight: "bold",
@@ -196,6 +216,5 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         marginTop: 16,
-
     },
 });

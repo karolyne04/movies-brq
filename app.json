@@ -1,34 +1,32 @@
 {
-  "expo": {
-    "name": "movies-brq",
-    "slug": "movies-brq",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "../src/assets/img/logo.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.carolyne04.moviesbrq"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#000000"
-      },
-      "edgeToEdgeEnabled": true,
-      "package": "com.carolyne04.moviesbrq"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "expo-font"
-    ]
-  }
+	"expo": {
+		"name": "movies-brq",
+		"slug": "movies-brq",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/icon.png",
+		"userInterfaceStyle": "light",
+		"newArchEnabled": true,
+		"splash": {
+			"image": "../src/assets/img/logo.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#000000"
+		},
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.carolyne04.moviesbrq"
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/adaptive-icon.png",
+				"backgroundColor": "#000000"
+			},
+			"edgeToEdgeEnabled": true,
+			"package": "com.carolyne04.moviesbrq"
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		},
+		"plugins": ["expo-font"]
+	}
 }

@@ -12,27 +12,26 @@ import { StarIcon } from "../assets/icons/StarIcon";
 import { TraIcon } from "../assets/icons/TraIcon";
 import { UserIcon } from "../assets/icons/UserIcon";
 
-
 const icons = {
-    home: HomeIcon,
-    lock: LockIcon,
-    user: UserIcon,
-    tra: TraIcon,
-    close: CloseIcon,
-    logout: LogoutIcon,
-    calendar: CalendarIcon,
-    star: StarIcon,
-    heart: HeartIcon,
-    notification: NotificationIcon,
-    arrowGo: ArrowGoIcon,
-    heartCircle: HeartCircleIcon,
+	home: HomeIcon,
+	lock: LockIcon,
+	user: UserIcon,
+	tra: TraIcon,
+	close: CloseIcon,
+	logout: LogoutIcon,
+	calendar: CalendarIcon,
+	star: StarIcon,
+	heart: HeartIcon,
+	notification: NotificationIcon,
+	arrowGo: ArrowGoIcon,
+	heartCircle: HeartCircleIcon,
 };
 
 export default function Icon({ name, size = 24, color = "#000" }) {
-    const SvgIcon = icons[name];
-    if (!SvgIcon) {
-        console.warn(`Ícone "${name}" não encontrado`);
-        return null;
-    }
-    return <SvgIcon size={size} color={color} />;
+	const SvgIcon = icons[name];
+	if (!SvgIcon) {
+		console.warn(`Ícone "${name}" não encontrado`);
+		return null;
+	}
+	return <SvgIcon size={size} color={color} />;
 }
