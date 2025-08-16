@@ -12,9 +12,9 @@ import { Roboto_500Medium } from "@expo-google-fonts/roboto";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
-    Nunito_700Bold, // corresponde ao font-weight: 700
-    Nunito_400Regular, // corresponde ao font-weight: 400
-    Roboto_500Medium, // corresponde ao font-weight: 500
+    Nunito_700Bold,
+    Nunito_400Regular,
+    Roboto_500Medium,
   });
 
   if (!fontsLoaded) {
@@ -26,9 +26,8 @@ export default function App() {
         <View style={styles.statusBarBackground} />
       )}
 
-      {/* StatusBar do Expo */}
       <ExpoStatusBar
-        style="light" // 'light' se fundo escuro
+        style="light"
 
       />
       <Routes />
@@ -39,12 +38,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
-
-
   },
   statusBarBackground: {
-    height: Platform.OS === 'android' ? 24 : 0, // altura aproximada da StatusBar
-    backgroundColor: colors.neutral, // mesma cor que no design
+    height: Platform.OS === 'android' ? 24 : 0,
+    backgroundColor: colors.neutral,
   },
 });

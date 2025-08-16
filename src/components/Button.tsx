@@ -28,23 +28,21 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     buttonEnabled: {
-        backgroundColor: colors.primary, // cor ativa (ex: laranja)
+        backgroundColor: colors.primary,
     },
     buttonDisabled: {
-        backgroundColor: colors.gray, // cor inativa (cinza)
+        backgroundColor: colors.gray,
     },
     buttonText: {
         fontWeight: "500",
-        color: colors.secondary, // cor do texto
-        fontFamily: "Roboto_500Medium", // fonte + peso
-        fontSize: 14, // font-size
-        lineHeight: 20, // line-height
-        letterSpacing: 0.1, // letter-spacing em pontos
-        textAlign: "center", // centralizado horizontalmente
-        textAlignVertical: "center", // vertical-align (Android)
-        // ...Platform.select({
-        //     ios: { includeFontPadding: false }, // remove padding extra no iOS
-        // }),
+        color: colors.secondary,
+        fontFamily: "Roboto_500Medium",
+        fontSize: 14,
+        lineHeight: 20,
+        letterSpacing: 0.1,
+        textAlign: "center",
+        textAlignVertical: "center",
+
     },
     textDisabled: {
         color: colors.tertiary,

@@ -11,7 +11,7 @@ const Header = () => {
         setMenuActive(!menuActive);
     };
     const handleLogout = () => {
-        // Aqui você poderia limpar tokens/estado do usuário, se tiver
+
         navigation.reset({
             index: 0,
             routes: [{ name: "Login" }],
@@ -55,14 +55,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     title: {
-        color: "#fff",
-
-        fontWeight: "bold",
-        fontFamily: "Nunito_400Regular", // fonte + peso
-        fontSize: 22, // font-size
-        lineHeight: 28, // line-height
-        letterSpacing: 0, // letter-spacing
-        textAlignVertical: "center", // vertical-align
+        color: colors.secondary,
+        fontFamily: "Nunito_400Regular",
+        fontSize: 22,
+        lineHeight: 28,
+        letterSpacing: 0,
+        textAlignVertical: "center",
     },
     circle: {
         width: 36,
@@ -70,10 +68,10 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "transparent", // sem background inicialmente
+        backgroundColor: "transparent",
     },
     circleActive: {
-        backgroundColor: colors.primary, // background quando clicado
+        backgroundColor: colors.primary,
         color: colors.neutral,
     },
     secondaryButton: {
@@ -89,7 +87,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.tertiary,
     },
     secondaryButtonText: {
-        color: "#fff",
+        color: colors.secondary,
         fontSize: 14,
         fontWeight: "bold",
     },

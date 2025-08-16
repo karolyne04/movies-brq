@@ -1,5 +1,5 @@
 import { TouchableOpacity, Image, Text, View, StyleSheet } from "react-native";
-import { Movie } from "../service/tmdb";
+import { Movie } from "../service/api";
 import { colors } from "../theme/colors";
 
 interface MovieCardProps {

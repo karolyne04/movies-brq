@@ -3,7 +3,7 @@ import { Path, Svg, Rect } from "react-native-svg"
 export const CalendarIcon = () => {
     return (
 
-        <Svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <Svg width="14" height="14" viewBox="0 0 14 14" fill="none" >
             <Rect x="1.1665" y="1.75" width="11.6667" height="11.0833" rx="3" stroke="#EC8B00" />
             <Path d="M4.0835 0.583252V1.74992" stroke="#EC8B00" stroke-linecap="round" stroke-linejoin="round" />
             <Path d="M9.9165 0.583252V1.74992" stroke="#EC8B00" stroke-linecap="round" stroke-linejoin="round" />

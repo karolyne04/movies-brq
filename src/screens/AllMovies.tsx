@@ -27,7 +27,7 @@ const AllMovies = () => {
     }, []);
 
     const handlePressMovie = (movie: Movie) => {
-        // navigation.navigate("MovieDetail" as never, { movieId: movie.id } as never);
+
         navigation.navigate("MovieDetail", { movie });
 
     };

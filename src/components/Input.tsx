@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View, Text, Animated } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View, Text, Animated, TextInputProps } from "react-native";
 import { colors } from "../theme/colors";
 import Icon from "./Icon";
 
@@ -20,7 +20,7 @@ export default function Input({
 }: InputProps
 ) {
     const [isFocused, setIsFocused] = useState(false);
-    const labelPosition = new Animated.Value(value ? 1 : 0);
+
     const labelAnim = useRef(new Animated.Value(value ? 1 : 0)).current;
 
 
@@ -31,18 +31,6 @@ export default function Input({
             useNativeDriver: false,
         }).start();
     }, [isFocused, value]);
-
-
-    const handleBlur = () => {
-        setIsFocused(false);
-        if (!value) {
-            Animated.timing(labelPosition, {
-                toValue: 0,
-                duration: 200,
-                useNativeDriver: false,
-            }).start();
-        }
-    };
 
     const labelStyle = {
         position: "absolute",
@@ -75,10 +63,8 @@ export default function Input({
 
                 onBlur={() => setIsFocused(false)}
             />
-
-
             <TouchableOpacity onPress={() => onChangeText("")} style={styles.clearButton}>
-                <Icon name="close" size={20} color="#FFF" />
+                <Icon name="close" size={20} color={colors.secondary} />
             </TouchableOpacity>
 
         </View>
@@ -99,16 +85,14 @@ const styles = StyleSheet.create({
         position: "relative",
         borderBottomWidth: 2,
         borderBottomColor: colors.secondary,
-
     },
     focused: {
         borderBottomWidth: 2,
         borderBottomColor: colors.primary,
     },
-
     input: {
         flex: 1,
-        color: "#FFF",
+        color: colors.secondary,
         fontSize: 16,
     },
     clearButton: {
