@@ -1,66 +1,69 @@
 # MoviesBRQ
 
-Aplicativo mobile para exibir filmes populares, buscar detalhes e marcar favoritos, desenvolvido com **React Native** e **Expo**. O app integra a **TMDb API** para listar os filmes.
+App de Filmes
+Um aplicativo móvel construído com React Native e Expo para descobrir e navegar por filmes. Este projeto utiliza uma pilha de tecnologia moderna para proporcionar uma experiência de usuário fluida e multiplataforma, com gerenciamento de estado via Zustand e um tratamento robusto de API com Axios.
 
----
+Principais Recursos
+Descoberta de Filmes: Navegue por uma seleção de filmes obtidos de uma API remota.
 
-## 📝 Descrição
+Navegação Intuitiva: Mova-se facilmente entre as diferentes seções do aplicativo usando @react-navigation.
 
-O **MoviesBRQ** permite que usuários:
+Gerenciamento de Estado: Gerenciamento de estado eficiente e previsível com Zustand.
 
-- Efetuar login fake (`user / 123`) com validação de campos obrigatórios e senha numérica.
-- Visualizar filmes populares do momento.
-- Ver detalhes de cada filme (sinopse, gênero, avaliação).
-- Marcar filmes como favoritos.
-- Navegar entre abas conforme o protótipo.
-- Lidar com erros de API ou indisponibilidade de internet.
+Fontes Personalizadas: Usa as Google Fonts (Nunito e Roboto) para uma aparência limpa e profissional.
 
-O projeto foi desenvolvido com foco em boas práticas de **arquitetura**, **testes unitários** (para vagas PL/SR) e uso correto de **variáveis de ambiente** para proteger a chave da API.
+Suporte Offline: Verifica a conectividade de rede usando @react-native-community/netinfo para proporcionar uma melhor experiência de usuário.
 
----
+Qualidade do Código: Garante um estilo de código e formatação consistentes usando Biome.
 
-## 💻 Tecnologias utilizadas
+Primeiros Passos
+Para rodar este projeto localmente, siga estes passos:
 
-- [React Native](https://reactnative.dev/)
-- [Expo](https://expo.dev/)
-- [React Navigation](https://reactnavigation.org/)
-- [Axios](https://axios-http.com/)
-- [TMDb API](https://www.themoviedb.org/settings/api)
-- [TypeScript](https://www.typescriptlang.org/) (opcional)
-- Gerenciamento de estado (ex.: Zustand)
-- Testes unitários: [Jest](https://jestjs.io/) e [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
-- Ambiente: pastas nativas geradas pelo Expo (`expo prebuild`)
+Pré-requisitos
+Certifique-se de ter o Node.js e o Expo CLI instalados em sua máquina.
 
----
+Instalação
+Clone o repositório:
 
-## 🚀 Funcionalidades
+git clone git@github.com:karolyne04/movies-brq.git
+cd movies-brq
 
-1. **Login fake**  
-   - Somente aceita `user / 123`.  
-   - Campos obrigatórios.  
-   - Senha deve conter apenas números.
+Instale as dependências:
 
-2. **Tela de Filmes com 2 abas**  
-   - Aba “Populares” e “Favoritos”.  
-   - Botão de favorito (plus).
+yarn
 
-3. **Detalhes do Filme**  
-   - Sinopse, gênero, avaliação.
+Crie um arquivo .env na raiz do seu projeto e adicione a sua chave de API para o banco de dados de filmes.
+
+# Substitua pela sua chave de API real
+EXPO_PUBLIC_MOVIE_API_KEY=your_api_key_here
+
+Scripts Disponíveis
+No diretório do projeto, você pode rodar os seguintes comandos:
 
 
+No diretório do projeto, você pode rodar os seguintes comandos:
 
-4. **Tratamento de erros**  
-   - Falha na API ou internet indisponível.
+yarn start: Inicia o servidor de desenvolvimento do Expo.
 
-5. **Boas práticas**  
-   - Código limpo e organizado.  
- 
-   - Uso de `.env` para API Key.
+yarn android: Compila e executa o aplicativo em um dispositivo ou emulador Android conectado.
 
----
+yarn ios: Compila e executa o aplicativo em um dispositivo ou simulador iOS conectado.
 
-## ⚙️ Como rodar o projeto
+yarn web: Executa o aplicativo em um navegador web.
 
-1. Clone o repositório:  
-```bash
-git clone https://github.com/seu-usuario/moviesbrq.git
+yarn lint: Verifica o código em busca de erros de linting usando Biome.
+
+yarn lint:fix: Corrige erros de linting e formatação automaticamente.
+
+Tecnologias Utilizadas
+Framework: React Native, Expo
+
+Linguagem: TypeScript
+
+Gerenciamento de Estado: Zustand
+
+Cliente de API: Axios
+
+Navegação: React Navigation
+
+Linting & Formatação: Biome
