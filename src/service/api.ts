@@ -1,4 +1,5 @@
-import NetInfo from "@react-native-community/netinfo";
+import { Alert } from "react-native";
+import * as Network from "expo-network";
 import axios from "axios";
 
 const api = axios.create({
@@ -9,7 +10,6 @@ const api = axios.create({
 	},
 });
 
-// Tipagem do filme
 export interface Movie {
 	id: number;
 	title: string;
@@ -21,51 +21,78 @@ export interface Movie {
 // Buscar todos os filmes populares
 export async function getPopularMovies(): Promise<Movie[]> {
 	try {
-		// Verifica se há internet
-		const netState = await NetInfo.fetch();
+		const netState = await Network.getNetworkStateAsync();
 		if (!netState.isConnected) {
-			throw new Error("Sem conexão com a internet.");
+			Alert.alert("Erro", "Sem conexão com a internet.");
+			return [];
 		}
 
-		console.log("Buscando filmes...");
+		console.log("Buscando filmes populares...");
 		const response = await api.get("/movie/popular");
-		console.log("Resposta da API:", response.data.results);
 		return response.data.results;
 	} catch (error) {
-		console.error("Erro ao buscar filmes:", error.message);
-		throw new Error(error.message || "Erro ao buscar filmes.");
+		if (error instanceof Error) {
+			console.error("Erro ao buscar filmes:", error.message);
+			Alert.alert("Erro", error.message);
+		} else {
+			console.error("Erro desconhecido:", error);
+			Alert.alert("Erro", "Erro inesperado");
+		}
+		return [];
 	}
 }
 
 // Buscar detalhes de um filme
 export async function getMovieDetails(id: number) {
 	try {
+		const netState = await Network.getNetworkStateAsync();
+		if (!netState.isConnected) {
+			Alert.alert("Erro", "Sem conexão com a internet.");
+			return null;
+		}
+
+		console.log(`Buscando detalhes do filme ${id}...`);
 		const response = await api.get(`/movie/${id}`);
 		return response.data;
 	} catch (error) {
-		console.error("Erro ao buscar detalhes do filme:", error.message);
-		throw new Error(error.message || "Erro ao buscar detalhes do filme.");
+		if (error instanceof Error) {
+			console.error("Erro ao buscar detalhes:", error.message);
+			Alert.alert("Erro", error.message);
+		} else {
+			console.error("Erro desconhecido:", error);
+			Alert.alert("Erro", "Erro inesperado");
+		}
+		return null;
 	}
 }
 
 // Buscar filmes favoritos
 export async function getFavoriteMovies(favoriteIds: number[] = []) {
 	try {
-		console.log("Buscando filmes favoritos...");
+		const netState = await Network.getNetworkStateAsync();
+		if (!netState.isConnected) {
+			Alert.alert("Erro", "Sem conexão com a internet.");
+			return [];
+		}
+
 		if (!favoriteIds.length) {
 			console.log("Nenhum filme favorito encontrado.");
 			return [];
 		}
 
-		console.log(`IDs de favoritos: ${favoriteIds.join(", ")}`);
+		console.log(`Buscando filmes favoritos: ${favoriteIds.join(", ")}`);
 		const promises = favoriteIds.map((id) => api.get(`/movie/${id}`));
 		const responses = await Promise.all(promises);
 
-		const favoriteMovies = responses.map((res) => res.data);
-		console.log(`Foram encontrados ${favoriteMovies.length} filmes favoritos.`);
-		return favoriteMovies;
+		return responses.map((res) => res.data);
 	} catch (error) {
-		console.error("Erro ao buscar filmes favoritos:", error.message);
+		if (error instanceof Error) {
+			console.error("Erro ao buscar favoritos:", error.message);
+			Alert.alert("Erro", error.message);
+		} else {
+			console.error("Erro desconhecido:", error);
+			Alert.alert("Erro", "Erro inesperado");
+		}
 		return [];
 	}
 }
