@@ -1,36 +1,49 @@
 # MoviesBRQ
 
-App de Filmes
-Um aplicativo móvel construído com React Native e Expo para descobrir e navegar por filmes. Este projeto utiliza uma pilha de tecnologia moderna para proporcionar uma experiência de usuário fluida e multiplataforma, com gerenciamento de estado via Zustand e um tratamento robusto de API com Axios.
+Aplicativo móvel construído com **React Native** e **Expo** para descobrir e navegar por filmes.  
+Este projeto utiliza uma pilha de tecnologia moderna para proporcionar uma experiência fluida e multiplataforma, com gerenciamento de estado via **Zustand** e integração com API usando **Axios**.
 
-Principais Recursos
-Descoberta de Filmes: Navegue por uma seleção de filmes obtidos de uma API remota.
+---
 
-Navegação Intuitiva: Mova-se facilmente entre as diferentes seções do aplicativo usando @react-navigation.
+##  Principais Recursos
+- **Descoberta de Filmes** → Navegue por uma seleção de filmes obtidos da API.
+- **Navegação Intuitiva** → Implementada com **React Navigation**.
+- **Gerenciamento de Estado** → Simples e eficiente com **Zustand**.
+- **Fontes Personalizadas** → Google Fonts (Nunito e Roboto).
+- **O aplicativo utiliza o pacote [`expo-network`](https://docs.expo.dev/versions/latest/sdk/network/) para verificar se o usuário possui conexão com a internet, garantindo uma experiência melhor em ambientes offline.
+- **Qualidade do Código** → Linting e formatação padronizados com **Biome**.
 
-Gerenciamento de Estado: Gerenciamento de estado eficiente e previsível com Zustand.
+---
 
-Fontes Personalizadas: Usa as Google Fonts (Nunito e Roboto) para uma aparência limpa e profissional.
+## 🛠️ Tecnologias Utilizadas
+- **Framework**: React Native + Expo  
+- **Linguagem**: TypeScript  
+- **Estado Global**: Zustand  
+- **Cliente HTTP**: Axios  
+- **Navegação**: React Navigation  
+- **Linting & Formatação**: Biome  
 
-Suporte Offline: Verifica a conectividade de rede usando @react-native-community/netinfo para proporcionar uma melhor experiência de usuário.
+---
 
-Qualidade do Código: Garante um estilo de código e formatação consistentes usando Biome.
+## 📦 Primeiros Passos
 
-Primeiros Passos
-Para rodar este projeto localmente, siga estes passos:
+### 🔹 Pré-requisitos
+- [Node.js](https://nodejs.org/) (>= 18)  
+- [Yarn](https://yarnpkg.com/)  
+- [Expo CLI](https://docs.expo.dev/workflow/expo-cli/) (`npm install -g expo-cli`)  
 
-Pré-requisitos
-Certifique-se de ter o Node.js e o Expo CLI instalados em sua máquina.
+➡️ Para rodar **nativamente** no Android/iOS:  
+- **Android**: [Android Studio](https://developer.android.com/studio) (SDK + Emulator configurado) ou dispositivo físico com depuração USB.  
+- **iOS**: [Xcode](https://developer.apple.com/xcode/) (somente em macOS).  
 
-Instalação
-Clone o repositório:
+---
 
+### 🔹 Instalação
+```bash
 git clone git@github.com:karolyne04/movies-brq.git
 cd movies-brq
-
-Instale as dependências:
-
 yarn
+
 
 Crie um arquivo .env na raiz do seu projeto e adicione a sua chave de API para o banco de dados de filmes.
 
@@ -38,32 +51,40 @@ Crie um arquivo .env na raiz do seu projeto e adicione a sua chave de API para o
 EXPO_PUBLIC_MOVIE_API_KEY=your_api_key_here
 
 Scripts Disponíveis
-No diretório do projeto, você pode rodar os seguintes comandos:
+
+yarn start → inicia o servidor Expo (modo recomendado para rodar no Expo Go).
+
+yarn android → compila e executa o app nativamente no Android (requer Android Studio configurado).
+
+yarn ios → compila e executa o app no iOS (requer Mac + Xcode).
+
+yarn web → executa o app no navegador.
+
+yarn lint → verifica erros de lint com Biome.
+
+yarn lint:fix → corrige erros de lint automaticamente.
+
+ Como Rodar
+Modo Expo (mais simples, sem build nativo)
+yarn start
 
 
-No diretório do projeto, você pode rodar os seguintes comandos:
+Escaneie o QR Code com o Expo Go (Android/iOS).
 
-yarn start: Inicia o servidor de desenvolvimento do Expo.
+Pressione a para abrir no emulador Android (se configurado).
 
-yarn android: Compila e executa o aplicativo em um dispositivo ou emulador Android conectado.
+Pressione w para abrir no navegador.
 
-yarn ios: Compila e executa o aplicativo em um dispositivo ou simulador iOS conectado.
+ Modo Nativo (Android/iOS)
+yarn android   # precisa do Android Studio configurado
+yarn ios       # apenas em macOS com Xcode
 
-yarn web: Executa o aplicativo em um navegador web.
+ Notas
 
-yarn lint: Verifica o código em busca de erros de linting usando Biome.
+O projeto já possui pastas nativas (android/ e ios/) geradas via Expo Prebuild.
 
-yarn lint:fix: Corrige erros de linting e formatação automaticamente.
+Se você quiser rodar apenas no Expo Go, não precisa dessas pastas.
 
-Tecnologias Utilizadas
-Framework: React Native, Expo
+Para builds nativos, garanta que o ambiente Android/iOS esteja configurado corretamente.
 
-Linguagem: TypeScript
-
-Gerenciamento de Estado: Zustand
-
-Cliente de API: Axios
-
-Navegação: React Navigation
-
-Linting & Formatação: Biome
+Recomendação : yarn start 
